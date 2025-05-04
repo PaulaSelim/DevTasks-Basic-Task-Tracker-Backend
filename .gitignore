@@ -1,0 +1,30 @@
+# Node.js dependencies
+node_modules/
+
+# Build output
+dist/
+build/
+
+# Logs
+npm-debug.log*
+yarn-debug.log*
+yarn-error.log*
+
+# Environment variables
+.env
+
+# VS Code
+.vscode/
+
+# Mac system files
+.DS_Store
+
+# IDEs
+.idea/
+*.sw?
+
+# Coverage reports
+coverage/
+
+# Optional: Docker
+docker-compose.override.yml
