@@ -1,7 +1,14 @@
 /* eslint-disable @typescript-eslint/no-unsafe-call */
 import { PartialType } from "@nestjs/mapped-types";
+import {
+  IsEnum,
+  IsOptional,
+  IsString,
+  MaxLength,
+  MinLength,
+} from "class-validator";
+import { TaskStatus } from "../entities/task.entity";
 import { CreateTaskDto } from "./create-task.dto";
-import { IsOptional, IsString, MinLength, MaxLength } from "class-validator";
 
 export class UpdateTaskDto extends PartialType(CreateTaskDto) {
   @IsOptional()
@@ -15,4 +22,8 @@ export class UpdateTaskDto extends PartialType(CreateTaskDto) {
   @MinLength(10)
   @MaxLength(160)
   description?: string;
+
+  @IsOptional()
+  @IsEnum(TaskStatus)
+  status?: TaskStatus;
 }
