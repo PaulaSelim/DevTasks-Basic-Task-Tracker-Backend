@@ -1,4 +1,10 @@
-import { IsString, MinLength, MaxLength } from "class-validator";
+import {
+  IsISO8601,
+  IsOptional,
+  IsString,
+  MaxLength,
+  MinLength,
+} from "class-validator";
 
 export class CreateTaskDto {
   @IsString()
@@ -10,4 +16,8 @@ export class CreateTaskDto {
   @MinLength(10)
   @MaxLength(160)
   description: string; // allow up to 160 for flexibility
+
+  @IsOptional()
+  @IsISO8601()
+  dueDate?: string; // ISO8601 string, optional
 }

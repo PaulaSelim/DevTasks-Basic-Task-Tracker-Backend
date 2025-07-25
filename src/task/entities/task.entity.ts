@@ -10,6 +10,7 @@ export class Task {
   description: string; // ~100 chars
   status: TaskStatus;
   userId: string; // Owner of the task
+  dueDate: Date | null; // <-- new field
   createdAt: Date;
   updatedAt: Date;
 }

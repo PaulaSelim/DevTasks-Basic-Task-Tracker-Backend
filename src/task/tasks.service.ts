@@ -21,6 +21,7 @@ export class TasksService {
       description: createTaskDto.description,
       status: TaskStatus.PENDING,
       userId,
+      dueDate: createTaskDto.dueDate ? new Date(createTaskDto.dueDate) : null,
       createdAt: new Date(),
       updatedAt: new Date(),
     };
@@ -72,10 +73,21 @@ export class TasksService {
       throw new ForbiddenException("Access denied to this task");
     }
 
-    // Update task properties
+    // Update task properties, always preserve name/description/dueDate if not provided
     const updatedTask = {
       ...task,
       ...updateTaskDto,
+      name: updateTaskDto.name !== undefined ? updateTaskDto.name : task.name,
+      description:
+        updateTaskDto.description !== undefined
+          ? updateTaskDto.description
+          : task.description,
+      dueDate:
+        updateTaskDto.dueDate !== undefined
+          ? updateTaskDto.dueDate
+            ? new Date(updateTaskDto.dueDate)
+            : null
+          : task.dueDate,
       updatedAt: new Date(),
     };
 

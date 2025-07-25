@@ -2,6 +2,7 @@
 import { PartialType } from "@nestjs/mapped-types";
 import {
   IsEnum,
+  IsISO8601,
   IsOptional,
   IsString,
   MaxLength,
@@ -26,4 +27,8 @@ export class UpdateTaskDto extends PartialType(CreateTaskDto) {
   @IsOptional()
   @IsEnum(TaskStatus)
   status?: TaskStatus;
+
+  @IsOptional()
+  @IsISO8601()
+  dueDate?: string;
 }
